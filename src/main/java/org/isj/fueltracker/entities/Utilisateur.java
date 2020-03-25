@@ -1,8 +1,11 @@
 package org.isj.fueltracker.entities;
 
+
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Entity
@@ -12,12 +15,63 @@ public class Utilisateur implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long idUtilisateur;
 
+    @Column(name = "nom")
     private String nom;
+    @Column(name = "prenom")
     private String prenom;
+    @Column(name = "nationalite")
     private String nationalite;
+    @Column(name = "pays")
     private String pays;
+    @Column(name = "adresse")
     private String adresse;
+    @Column(name = "login")
+    private String login;
+    @Column(name = "mdp")
+    private String mdp;
+    @Column(name = "roles")
+    private String roles;
+    @Column(name = "droits")
+    private String droits;
+    @Column(name = "active")
+    private boolean active;
+
+
+
     private float partAction;
+
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getMdp() {
+        return mdp;
+    }
+
+    public void setMdp(String mdp) {
+        this.mdp = mdp;
+    }
+
+    public void setRoles(String roles) {
+        this.roles = roles;
+    }
+
+    public void setDroits(String droits) {
+        this.droits = droits;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
 
     public enum Statut{
         Personne_Morale, Personne_Physique
@@ -112,5 +166,19 @@ public class Utilisateur implements Serializable {
 
     public void setListeStations(List<StationService> listeStations) {
         this.listeStations = listeStations;
+    }
+
+    public List<String> getRoles(){
+        if (this.roles.length()>0){
+            return Arrays.asList(this.roles.split(","));
+        }
+        return new ArrayList<>();
+    }
+
+    public List<String> getDroits(){
+        if (this.roles.length()>0){
+            return Arrays.asList(this.droits.split(","));
+        }
+        return new ArrayList<>();
     }
 }

@@ -1,6 +1,7 @@
 package org.isj.fueltracker.restControllers;
 
 
+import org.hibernate.annotations.Parameter;
 import org.isj.fueltracker.entities.Utilisateur;
 import org.isj.fueltracker.repositories.UtilisateurRepository;
 import org.springframework.web.bind.annotation.*;
@@ -9,6 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/")
+@CrossOrigin
 public class UtilisateurRestController {
     
     private final UtilisateurRepository utilisateurRepository;
@@ -18,6 +20,7 @@ public class UtilisateurRestController {
         this.utilisateurRepository = utilisateurRepository;
     }
 
+    //CRUD
     @GetMapping("listerUtilisateur")
     public List<Utilisateur> getAllUtilisateur(){
         return utilisateurRepository.findAll();
@@ -40,4 +43,6 @@ public class UtilisateurRestController {
     public void deleteUtilisateur(@PathVariable Long idUtilisateur){
         utilisateurRepository.deleteById(idUtilisateur);
     }
+
+
 }

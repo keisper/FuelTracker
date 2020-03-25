@@ -12,8 +12,13 @@ public class Produit implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long idProduit;
 
+    @Column(name = "code")
     private String code;
+
+    @Column(name = "quantite")
     private float quantite;
+
+    @Column(name = "nom")
     private String nom;
 
     @ManyToMany

@@ -12,7 +12,9 @@ public class StationService implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long idStation;
 
+    @Column(name = "nom")
     private String nom;
+    @Column(name = "adresse")
     private String adresse;
 
     public enum TypeCarburant{

@@ -12,7 +12,9 @@ public class Fournisseur implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long idFournisseur;
 
+    @Column(name = "nom")
     private String nom;
+    @Column(name = "adresse")
     private String adresse;
 
     @ManyToMany

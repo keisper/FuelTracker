@@ -10,6 +10,7 @@ public class Paiement implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long idPaiement;
 
+
     public enum Statut{
         NonPayé, EnCours, Payé
     }

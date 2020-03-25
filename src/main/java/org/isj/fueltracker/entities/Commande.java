@@ -17,13 +17,19 @@ public class Commande implements Serializable {
     private Long idCommande;
 
     @DateTimeFormat(pattern = "dd-MM-yyyy")
+    @Column(name = "dateCommande")
     private Date dateCommande;
 
     @DateTimeFormat(pattern = "dd-MM-yyyy")
+    @Column(name = "dateLivraison")
     private Date dateLivraison;
 
+    @Column(name = "volumeCommande")
     private float volumeCommandé;
+
+    @Column(name = "volumeLivre")
     private float volumeLivré;
+
     public enum TypeCarburantLivré{
         Gazoil, Essence
     }
