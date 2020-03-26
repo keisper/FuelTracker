@@ -5,8 +5,8 @@ import {getUserById} from "../../utils/dev/Common";
 export default function (props) {
     const [modal_add_form, setModalAddForm] = useState(false)
 
-    const userModified = getUserById(props.id)
-    if (props.modifre)
+    //const userModified = getUserById(props.id)
+    //if (props.modifre)
 
     const handleToggleModalAddForm = e => {
         e.stopPropagation()
