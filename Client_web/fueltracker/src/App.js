@@ -89,6 +89,7 @@ export default function App() {
                 <div>
                     <div className="content">
                         <Switch>
+                            <PublicRoute exact path="/" component={Login} />
                             <PublicRoute exact path="/login" component={Login} />
                             <Route exact path="/logout" component={Logout} />
                             <Route exact path="/error/:status" component={Errors} />

@@ -140,7 +140,7 @@ export default function DashboardAdmin(props) {
                                                     <td>{user.nationalite}</td>
                                                     <td>{user.adresse}</td>
                                                     <td>
-                                                        <Button color="primary" id={user.id} modified={true}>Infos</Button>
+                                                        <Button color="primary" >Infos</Button>
                                                         <Button color="danger" onClick={() => handleDelete(user.id)} to="#" className="ml-2">Delete</Button>
                                                     </td>
                                                 </tr>
