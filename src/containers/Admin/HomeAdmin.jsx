@@ -1,61 +1,50 @@
 import React, { useState, useContext } from "react";
-import {Button} from "antd";
+// noinspection ES6CheckImport
+import {Switch, useRouteMatch} from "react-router-dom";
 import { MdApps, MdHome, MdPeople, MdNotifications, MdAccountCircle, MdSettings, MdPowerSettingsNew } from "react-icons/md";
 
 import Sidenav from "../../components/Sidenav"
-import {DataSessionContext, DataUserContext} from "../../utils";
-import {Home, Stations, Users, Messages} from "./pages";
-import {BrowserRouter, Switch} from "react-router-dom";
+import { DataSessionContext, DataUserContext} from "../../utils";
+import {Home, Stations, Users, Messages, Settings, Profile} from "./pages";
+
 import PrivateRoute from "../../components/PrivateRoute";
 
 
-export default function HomeAdmin(props) {
+export default function HomeAdmin() {
 
-    const user = useContext(DataUserContext);
+    const _idUserLogged = useContext(DataSessionContext).getUID();
+    const userLogged = useContext(DataUserContext).findById(_idUserLogged);
+    const { path, url } = useRouteMatch();
 
-    const [currentPage, setCurrentPage] = useState("home")
-    const [listTopBar, setListTopBar] = useState({
+    const [currentPage, setCurrentPage] = useState("home");
+    const listTopBar= {
         header: [
-            { _id: "home", title: "Accueil", component: <MdHome/> },
-            { _id: "stations", title: "Station", component: <MdApps/> },
-            { _id: "users", title: "Utilisateurs", component: <MdPeople/> },
-            { _id: "messages", title: "Messages", component: <MdNotifications/> },
+            { _id: "home", title: "Accueil", url: url, component: <MdHome/> },
+            { _id: "stations", title: "Station", url: `${url}/stations`, component: <MdApps/> },
+            { _id: "users", title: "Utilisateurs", url: `${url}/users`, component: <MdPeople/> },
+            { _id: "messages", title: "Messages", url: `${url}/messages`, component: <MdNotifications/> },
         ],
 
         footer: [
-            { _id: "profile", title: "Profile", component: <MdAccountCircle/> },
-            { _id: "setting", title: "Paramètre", component: <MdSettings/> },
+            { _id: "profile", title: "Profile", url: `${url}/profile`, component: <MdAccountCircle/> },
+            { _id: "setting", title: "Paramètre", url: `${url}/setting`, component: <MdSettings/> },
+            { _id: "logout", title: "Déconnexion", url: "/logout", component: <MdPowerSettingsNew/>, quit: true},
         ]
-    });
-
-    const renderPage = () => {
-        switch (currentPage) {
-            case "stations":
-                return <Stations/>
-            case "users":
-                return <Users/>
-            case "messages":
-                return <Messages/>
-            default:
-                return <Home/>
-        }
-    }
+    };
 
     return (
         <div className="app--wrapper">
             <Sidenav {...listTopBar} current={currentPage} setCurrent={setCurrentPage} />
-            <div className="app--content">
-                {renderPage()}
-            </div>
-            <BrowserRouter basename="root">
+            <div className="app--content" {...userLogged}>
                 <Switch>
-                    {listTopBar.header.map(
-                        ({_id, title, component}, index) => (
-                            <PrivateRoute key={`route-root-${_id}`} exact path={title} {...component} />
-                        )
-                    )}
+                    <PrivateRoute exact path={path} component={Home} />
+                    <PrivateRoute exact path={`${path}/messages`} component={() => <Messages {...userLogged}/>} />
+                    <PrivateRoute exact path={`${path}/profile`} component={() => <Profile {...userLogged}/>} />
+                    <PrivateRoute exact path={`${path}/setting`} component={() => <Settings {...userLogged}/>} />
+                    <PrivateRoute exact path={`${path}/stations`} component={() => <Stations {...userLogged}/>} />
+                    <PrivateRoute exact path={`${path}/users`} component={() => <Users {...userLogged}/>} />
                 </Switch>
-            </BrowserRouter>
+            </div>
         </div>
     )
 }

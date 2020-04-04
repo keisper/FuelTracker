@@ -60,6 +60,7 @@ html, body{
     flex-basis: 0;
     background: white;
     height: 100%;
+    padding: 20px;
     overflow-y: auto;
 }
 

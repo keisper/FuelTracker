@@ -1,5 +1,8 @@
 import React from "react";
+import {useLocation} from "react-router-dom";
+
 
 export default function Error() {
-    return <p>Je suis dans la page d'erreur</p>
+    const location = useLocation()
+    return <p>Page Not Found {location.pathname}</p>
 }

@@ -1,17 +1,15 @@
 import React, {useState} from "react";
 
 import {Drawer} from "antd"
-import {MdDehaze, MdPowerSettingsNew} from "react-icons/md";
+import {MdDehaze} from "react-icons/md";
 
 import './Sidenav.css'
-import {Link} from "react-router-dom";
+import SidenavLink from "./SidenavLink";
 
 
-export default function Sidenav({header, footer, current, setCurrent}) {
+export default function Sidenav({header, footer}) {
 
     const [isMobile, setIsMobile] = useState(false);
-
-    const handleClick = (page) => setCurrent(page);
     const showDrawer = () => setIsMobile(true);
     const closeDrawer = () => setIsMobile(false);
 
@@ -20,25 +18,10 @@ export default function Sidenav({header, footer, current, setCurrent}) {
             <div className="sidenav--wrapper my-primary-color">
                 <ul className="sidenav--header">
                     <li className="sidenav-nav-link sidenav--menu"><a href="#" onClick={showDrawer}><MdDehaze/></a></li>
-                    {header.map(
-                        ({_id, title, component}, index) => (
-                            <li key={`li-link-${_id}`} className={`sidenav-nav-link ${_id === current && "active"}`}>
-                                {index === 0 ?
-                                    <Link to="/root" onClick={() => handleClick(_id)}>{component}</Link> :
-                                    <a href={`#${_id}`} onClick={() => handleClick(_id)}>{component}</a>}
-                            </li>
-                        )
-                    )}
+                    { header.map(({_id, ...elt}) => <SidenavLink key={_id} {...elt}/>) }
                 </ul>
                 <ul className="sidenav--footer">
-                    {footer.map(
-                        ({_id, title, component, active}) => (
-                            <li key={`li-link-${_id}`} className={`sidenav-nav-link ${active && "active"}`}>
-                                <a href={`#${_id}`} onClick={() => handleClick(_id)}>{component}</a>
-                            </li>
-                        )
-                    )}
-                    <li className="sidenav-nav-link"><a to="/logout"><MdPowerSettingsNew/></a></li>
+                    { footer.map(({_id, ...elt}) => <SidenavLink key={_id} {...elt}/>) }
                 </ul>
             </div>
             <Drawer
@@ -49,23 +32,8 @@ export default function Sidenav({header, footer, current, setCurrent}) {
                 visible={isMobile}
             >
                 <ul className="sidenav__mobile--header">
-                    {header.map(
-                        ({_id, title, component}, index) => (
-                            <li key={`li-link-${_id}`} className={`sidenav-nav-link ${_id === current && "active"}`}>
-                                {index === 0 ?
-                                    <Link to="/root" onClick={() => handleClick(_id)}>{component} {title}</Link> :
-                                    <a href={`#${_id}`} onClick={() => handleClick(_id)}>{component} {title}</a>}
-                            </li>
-                        )
-                    )}
-                    {footer.map(
-                        ({_id, title, component, active}) => (
-                            <li key={`li-link-${_id}`} className={`sidenav-nav-link ${active && "active"}`}>
-                                <a href={`#${_id}`} onClick={() => handleClick(_id)}>{component} {title}</a>
-                            </li>
-                        )
-                    )}
-                    <li className="sidenav-nav-link"><a to="/logout"><MdPowerSettingsNew/> Déconnexion</a></li>
+                    { header.map(({_id, ...elt}) => <SidenavLink key={_id} {...elt}/>) }
+                    { footer.map(({_id, ...elt}) => <SidenavLink key={_id} {...elt}/>) }
                 </ul>
             </Drawer>
         </>
