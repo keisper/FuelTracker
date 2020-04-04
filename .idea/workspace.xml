@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="cced3e26-fe6d-40ad-ba96-0b55a6148e74" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="client-web" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="C:\Users\westb\Documents\PROJET\FuelTracker\client_web\.idea" />
+      </set>
+    </option>
+  </component>
+  <component name="ProjectId" id="1ZrUtHqVPpUpdGmodPTGFAd7y2E" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="nodejs_interpreter_path" value="node" />
+    <property name="nodejs_package_manager_path" value="yarn" />
+    <property name="settings.editor.selected.configurable" value="org.jetbrains.r.configuration.RActiveInterpreterProjectConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\westb\Documents\PROJET\FuelTracker\client_web\src\assets" />
+      <recent name="C:\Users\westb\Documents\PROJET\FuelTracker\client_web\src\containers\Error" />
+      <recent name="C:\Users\westb\Documents\PROJET\FuelTracker\client_web\src\containers\Customer" />
+      <recent name="C:\Users\westb\Documents\PROJET\FuelTracker\client_web\src\containers\Station" />
+      <recent name="C:\Users\westb\Documents\PROJET\FuelTracker\client_web\src\containers\Logout" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\westb\Documents\PROJET\FuelTracker\client_web\src\App" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Debug Application" type="JavascriptDebugType" uri="http://localhost:3000">
+      <method v="2" />
+    </configuration>
+    <configuration name="npm start" type="js.build_tools.npm">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="cced3e26-fe6d-40ad-ba96-0b55a6148e74" name="Default Changelist" comment="" />
+      <created>1585596919088</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1585596919088</updated>
+      <workItem from="1585596922677" duration="2726000" />
+      <workItem from="1585635168944" duration="622000" />
+      <workItem from="1585671937079" duration="1480000" />
+      <workItem from="1585772180319" duration="75047000" />
+      <workItem from="1585940394197" duration="13781000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="1">
+          <value>
+            <State>
+              <option name="SHOW_ONLY_AFFECTED_CHANGES" value="true" />
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="HEAD" />
+                      </list>
+                    </value>
+                  </entry>
+                  <entry key="roots">
+                    <value>
+                      <list>
+                        <option value="$PROJECT_DIR$" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="OPEN_TABS">
+      <set>
+        <option value="1" />
+      </set>
+    </option>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="414" y="195" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1585597649697">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="414" y="195" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1585597649697" />
+    <state x="730" y="343" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1585775592707">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="730" y="343" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1585775592707" />
+    <state x="690" y="287" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1585794646567">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="690" y="287" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1585794646567" />
+    <state x="739" y="282" key="FileChooserDialogImpl" timestamp="1585978889459">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="739" y="282" key="FileChooserDialogImpl/0.0.1920.1080@0.0.1920.1080" timestamp="1585978889459" />
+    <state width="1877" height="207" key="GridCell.Tab.0.bottom" timestamp="1585975859802">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1877" height="207" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1585975859802" />
+    <state width="1877" height="207" key="GridCell.Tab.0.center" timestamp="1585975859801">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1877" height="207" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1585975859801" />
+    <state width="1877" height="207" key="GridCell.Tab.0.left" timestamp="1585975859799">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1877" height="207" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1585975859799" />
+    <state width="1877" height="207" key="GridCell.Tab.0.right" timestamp="1585975859801">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1877" height="207" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1585975859801" />
+    <state x="672" y="256" key="MultipleFileMergeDialog" timestamp="1585979839922">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="672" y="256" key="MultipleFileMergeDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1585979839922" />
+    <state x="0" y="0" key="SettingsEditor" timestamp="1585597696872">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="0" y="0" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1585597696872" />
+    <state width="498" height="446" key="SwitcherDM" timestamp="1585933497528">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="498" height="446" key="SwitcherDM/0.0.1920.1080@0.0.1920.1080" timestamp="1585933497528" />
+    <state x="552" y="273" key="Vcs.Push.Dialog.v2" timestamp="1585979782345">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="552" y="273" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1585979782345" />
+    <state x="636" y="364" key="com.intellij.ide.util.TipDialog" timestamp="1585940420761">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="636" y="364" key="com.intellij.ide.util.TipDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1585940420761" />
+  </component>
+</project>
