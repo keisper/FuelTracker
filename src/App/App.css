@@ -1,0 +1,72 @@
+html, body{
+    font-size: 16px;
+    font-family: 'Cairo', sans-serif;
+    overflow: hidden;
+}
+
+.my-primary-color{
+    background: #199B9F !important;
+}
+
+.text-my-primary-color{
+    color: #199B9F !important;
+}
+
+.my-secondary-color{
+    background: #F57B00 !important;
+    color: white;
+}
+
+.text-my-secondary-color{
+    color: #F57B00 !important;
+}
+
+.my-thirsty-color{
+    background: #15A08D !important;
+}
+
+.text-my-thirsty-color{
+    color: #15A08D !important;
+}
+
+.app--wrapper{
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    display: flex;
+}
+
+.app--wrapper > *{
+    height: 100%;
+}
+
+.app--content{
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 0;
+    background: #ECEAED;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+}
+
+.app--content .title span{
+    font-weight: bold;
+}
+
+.app--content .app--body{
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 0;
+    background: white;
+    height: 100%;
+    overflow-y: auto;
+}
+
+@media screen and (max-width: 700px){
+    .app--wrapper { flex-direction: column }
+}
+
+@media screen and (max-width: 460px){
+    .app--content { padding: 10px 5px 0}
+}

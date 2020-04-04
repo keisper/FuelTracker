@@ -1,0 +1,137 @@
+.login_wrapper{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgb(6, 190, 182), rgb(72, 177, 191));
+}
+
+.login_brand{
+    position: relative;
+    display: flex;
+    margin: 60px;
+    flex-wrap: wrap;
+    width: 800px;
+    background: white;
+    box-shadow: 0 8px 17px 2px rgba(0,0,0,0.14), 0 3px 14px 2px rgba(0,0,0,0.12), 0 5px 5px -3px rgba(0,0,0,0.2);
+}
+
+.login_brand > * {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-width: 300px;
+    padding: 20px;
+}
+
+.login_brand--left{
+    z-index: 2;
+    justify-content: center;
+    align-items: center;
+    flex: 1.5 1 0;
+    background: url("../../assets/wave.svg") no-repeat center;
+    background-size: cover;
+}
+
+.login_brand--left a img{
+    width: 250px;
+    margin-bottom: 30px;
+}
+
+.login_brand--left .login_brand--text{
+    margin-right: 100px;
+    color: white;
+}
+
+.login_brand--left .login_brand--text h2{
+    position: relative;
+    color: white;
+    font-weight: 700;
+    font-size: 2.25rem;
+    margin-bottom: 25px;
+}
+
+.login_brand--left .login_brand--text h2:before{
+    content: "";
+    position: absolute;
+    width: 70px; height: 8px;
+    background: #F57B00;
+    bottom: -5px; left: 0;
+}
+
+.login_brand--left .login_brand--text p{
+    text-align: justify;
+}
+
+.login_brand--right{
+    position: relative;
+    z-index: 1;
+    flex: 1 1 0;
+    background: transparent;
+}
+
+.login_brand--right .icon--login{
+    background: linear-gradient(#ff7f2a, #F57B00);
+    width: 80px; height: 80px;
+    border-radius: 50%;
+    color: white;
+    font-size: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    margin-bottom: 40px;
+}
+
+.login_brand--right > * {
+    margin-bottom: 1.25rem;
+    font-size: 1rem;
+}
+
+.login_brand--right #username,
+.login_brand--right #password{
+    padding-left: 10px;
+}
+
+.login_brand--right > *:nth-child(3) {
+    margin-bottom: 2.5rem;
+}
+
+
+.login_brand--right .ant-input-prefix{
+    font-size: 1.25rem;
+    vertical-align: middle;
+}
+
+.login_brand--right button{
+    width: 100%;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    padding: 5px;
+    height: auto;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 5px;
+}
+
+.login_brand--right button:hover{
+    color: white;
+}
+
+
+@media screen and (max-width: 820px){
+
+    .login_brand--left{ display: none }
+
+    .login_brand--right{
+        background: linear-gradient(to bottom, #199B9F, #19cf9f);
+    }
+
+    .login_brand--right > a{
+        color: white;
+    }
+}

@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cced3e26-fe6d-40ad-ba96-0b55a6148e74" name="Default Changelist" comment="" />
+    <list default="true" id="cced3e26-fe6d-40ad-ba96-0b55a6148e74" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/Client_mobile/test.txt" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -64,7 +66,7 @@
       <recent name="C:\Users\westb\Documents\PROJET\FuelTracker\client_web\src\App" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="npm.npm start">
     <configuration name="Debug Application" type="JavascriptDebugType" uri="http://localhost:3000">
       <method v="2" />
     </configuration>
@@ -93,7 +95,7 @@
       <workItem from="1585635168944" duration="622000" />
       <workItem from="1585671937079" duration="1480000" />
       <workItem from="1585772180319" duration="75047000" />
-      <workItem from="1585940394197" duration="13781000" />
+      <workItem from="1585940394197" duration="14815000" />
     </task>
     <servers />
   </component>
@@ -137,10 +139,10 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
-    <state x="414" y="195" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1585597649697">
+    <state x="414" y="195" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1585982148057">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="414" y="195" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1585597649697" />
+    <state x="414" y="195" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1585982148057" />
     <state x="730" y="343" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1585775592707">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
