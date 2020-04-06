@@ -32,6 +32,11 @@ public class UtilisateurRestController {
         return utilisateurRepository.findAll();
     }
 
+    @GetMapping("retrouverUtilisateurByLoginAndPassword/{login}/{password}")
+    public Utilisateur getUtilisateurByUsernameAndPassword(@PathVariable String login, @PathVariable String password){
+        return utilisateurRepository.findByUsernameAndPassword(login, password);
+    }
+
     /**
      * méthode permettant d'enregistrer un utilisateur à partir du paramètre utilisateur
      * @param utilisateur

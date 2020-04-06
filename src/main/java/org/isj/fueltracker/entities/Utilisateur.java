@@ -31,6 +31,8 @@ public class Utilisateur implements Serializable {
     private String username;
     @Column (name = "password")
     private String password;
+    @Column (name = "email")
+    private String email;
 
 
     public enum Statut{
@@ -58,10 +60,11 @@ public class Utilisateur implements Serializable {
      * @param roles
      * @param username
      * @param password
+     * @param email
      */
     public Utilisateur(String nom, String prenom, String nationalite, String pays, String adresse,
                        float partAction, Statut statutUtilisateur, String roles,String username,
-                       String password) {
+                       String password, String email) {
         this.nom = nom;
         this.prenom = prenom;
         this.nationalite = nationalite;
@@ -72,6 +75,7 @@ public class Utilisateur implements Serializable {
         this.roles = roles;
         this.username = username;
         this.password = password;
+        this.email = email;
     }
 
     /**
@@ -260,6 +264,14 @@ public class Utilisateur implements Serializable {
      */
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     /**
