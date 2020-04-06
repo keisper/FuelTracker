@@ -18,14 +18,14 @@ export default function Login(props) {
     const [ready, setReady] = useState(false);
     const [errorMsg, setErrorMsg] = useState("");
 
-    message.config({top: 60})
+    message.config({top: 60});
 
 
     useEffect(() => {
         document.title += " | Connexion";
         if (email !== "" && password.length > 7){
             const emailReg  = new RegExp(/^([\w-.]+)@((?:[\w]+\.)+)([a-zA-Z]{2,4})/i);
-            setIsEmail(emailReg.test(email))
+            setIsEmail(emailReg.test(email));
             setReady(true)
         }
 
@@ -39,7 +39,7 @@ export default function Login(props) {
     const handleSubmit = e => {
         e.preventDefault();
         const {response, message: msg, data} = manageUsers.login([email, is_email], password,  manageSession);
-        message.destroy()
+        message.destroy();
         if(response) {
             (data.role === "ADMIN") ? props.history.push(`/root`) : props.history.push(`/home`)
         }else setErrorMsg(msg)

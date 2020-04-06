@@ -4,6 +4,9 @@
  * @description Ce module s'occupe de tout l'aspect Données (Interaction avec la base de données)
  */
 
+import axios from 'axios'
+
+const host_api_service = process.env.REACT_APP_HOST_API_SERVICE;
 
 
 /**
