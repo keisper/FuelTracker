@@ -6,16 +6,30 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+/**
+ *
+ */
 @Service
 public class DbInit implements CommandLineRunner {
     private UtilisateurRepository utilisateurRepository;
     private PasswordEncoder passwordEncoder;
 
+    /**
+     * @author  groupe_service
+     * Constructeur
+     * @param utilisateurRepository
+     * @param passwordEncoder
+     */
     public DbInit(UtilisateurRepository utilisateurRepository, PasswordEncoder passwordEncoder) {
         this.utilisateurRepository = utilisateurRepository;
         this.passwordEncoder = passwordEncoder;
     }
 
+    /**
+     * @author groupe_service
+     * Tester les méthodes des différets services
+     * @param args
+     */
     @Override
     public void run(String... args)  {
         utilisateurRepository.deleteAll();

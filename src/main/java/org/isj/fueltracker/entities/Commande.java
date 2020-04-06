@@ -8,6 +8,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+/**
+ *
+ */
 @Entity
 @Table(name = "commande")
 public class Commande implements Serializable {
@@ -22,94 +25,167 @@ public class Commande implements Serializable {
     @DateTimeFormat(pattern = "dd-MM-yyyy")
     private Date dateLivraison;
 
-    private float volumeCommandé;
-    private float volumeLivré;
-    public enum TypeCarburantLivré{
+    private float volumeCommande;
+    private float volumeLivre;
+    public enum TypeCarburantLivre{
         Gazoil, Essence
     }
 
     @Enumerated(EnumType.STRING)
-    private TypeCarburantLivré typeCarburantLivré;
+    private TypeCarburantLivre typeCarburantLivre;
 
     @ManyToOne
     private Fournisseur fournisseur;
 
     @OneToMany(mappedBy = "commande")
-    private List<Paiement> listePaiementsEffectués = new ArrayList<>();
+    private List<Paiement> listePaiementsEffectues = new ArrayList<>();
 
     public Commande() {
     }
 
-    public Commande(Date dateCommande, Date dateLivraison, float volumeCommandé, float volumeLivré, TypeCarburantLivré typeCarburantLivré, Fournisseur fournisseur) {
+    /**
+     *
+     * @param dateCommande
+     * @param dateLivraison
+     * @param volumeCommande
+     * @param volumeLivre
+     * @param typeCarburantLivre
+     * @param fournisseur
+     */
+    public Commande(Date dateCommande, Date dateLivraison, float volumeCommande, float volumeLivre, TypeCarburantLivre typeCarburantLivre, Fournisseur fournisseur) {
         this.dateCommande = dateCommande;
         this.dateLivraison = dateLivraison;
-        this.volumeCommandé = volumeCommandé;
-        this.volumeLivré = volumeLivré;
-        this.typeCarburantLivré = typeCarburantLivré;
+        this.volumeCommande = volumeCommande;
+        this.volumeLivre = volumeLivre;
+        this.typeCarburantLivre = typeCarburantLivre;
         this.fournisseur = fournisseur;
     }
 
+    /**
+     *
+     * @return Long
+     */
     public Long getIdCommande() {
         return idCommande;
     }
 
+    /**
+     *
+     * @param idCommande
+     */
     public void setIdCommande(Long idCommande) {
         this.idCommande = idCommande;
     }
 
+    /**
+     *
+     * @return Date
+     */
     public Date getDateCommande() {
         return dateCommande;
     }
 
+    /**
+     *
+     * @param dateCommande
+     */
     public void setDateCommande(Date dateCommande) {
         this.dateCommande = dateCommande;
     }
 
+    /**
+     *
+     * @return Date
+     */
     public Date getDateLivraison() {
         return dateLivraison;
     }
 
+    /**
+     *
+     * @param dateLivraison
+     */
     public void setDateLivraison(Date dateLivraison) {
         this.dateLivraison = dateLivraison;
     }
 
-    public float getVolumeCommandé() {
-        return volumeCommandé;
+    /**
+     *
+     * @return Float
+     */
+    public float getVolumeCommande() {
+        return volumeCommande;
     }
 
-    public void setVolumeCommandé(float volumeCommandé) {
-        this.volumeCommandé = volumeCommandé;
+    /**
+     *
+     * @param volumeCommande
+     */
+    public void setVolumeCommande(float volumeCommande) {
+        this.volumeCommande = volumeCommande;
     }
 
-    public float getVolumeLivré() {
-        return volumeLivré;
+    /**
+     *
+     * @return Float
+     */
+    public float getVolumeLivre() {
+        return volumeLivre;
     }
 
-    public void setVolumeLivré(float volumeLivré) {
-        this.volumeLivré = volumeLivré;
+    /**
+     *
+     * @param volumeLivre
+     */
+    public void setVolumeLivre(float volumeLivre) {
+        this.volumeLivre = volumeLivre;
     }
 
-    public TypeCarburantLivré getTypeCarburantLivré() {
-        return typeCarburantLivré;
+    /**
+     *
+     * @return
+     */
+    public TypeCarburantLivre getTypeCarburantLivre() {
+        return typeCarburantLivre;
     }
 
-    public void setTypeCarburantLivré(TypeCarburantLivré typeCarburantLivré) {
-        this.typeCarburantLivré = typeCarburantLivré;
+    /**
+     *
+     * @param typeCarburantLivre
+     */
+    public void setTypeCarburantLivre(TypeCarburantLivre typeCarburantLivre) {
+        this.typeCarburantLivre = typeCarburantLivre;
     }
 
+    /**
+     *
+     * @return Fournisseur
+     */
     public Fournisseur getFournisseur() {
         return fournisseur;
     }
 
+    /**
+     *
+     * @param fournisseur
+     */
     public void setFournisseur(Fournisseur fournisseur) {
         this.fournisseur = fournisseur;
     }
 
-    public List<Paiement> getListePaiementsEffectués() {
-        return listePaiementsEffectués;
+    /**
+     *
+     * @return List<Paiement>
+     */
+    public List<Paiement> getListePaiementsEffectues() {
+        return listePaiementsEffectues;
     }
 
-    public void setListePaiementsEffectués(List<Paiement> listePaiementsEffectués) {
-        this.listePaiementsEffectués = listePaiementsEffectués;
+    /**
+     *
+     * @param listePaiementsEffectues
+     */
+    public void setListePaiementsEffectues(List<Paiement> listePaiementsEffectues) {
+        this.listePaiementsEffectues = listePaiementsEffectues;
     }
 }

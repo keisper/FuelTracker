@@ -20,13 +20,26 @@ import java.io.IOException;
 public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
     private UtilisateurRepository utilisateurRepository;
 
+    /**
+     *
+     * @param authenticationManager
+     * @param utilisateurRepository
+     */
     public JwtAuthorizationFilter(AuthenticationManager authenticationManager, UtilisateurRepository utilisateurRepository) {
         super(authenticationManager);
         this.utilisateurRepository = utilisateurRepository;
     }
 
-    //méthode utilisée pour extraire le login du token et obtenir l'objet utilisateur
-    //Ceci afin d'obtenir ses rôles de la BD
+    /**
+     * méthode utilisée pour extraire le login du token et obtenir l'objet utilisateur
+     * /Ceci afin d'obtenir ses rôles de la BD
+     * @param request
+     * @param response
+     * @param chain
+     * @throws IOException
+     * @throws ServletException
+     */
+
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws IOException, ServletException {
         String header = request.getHeader(JwtProperties.HEADER_STRING);
@@ -45,6 +58,11 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
         chain.doFilter(request,response);
     }
 
+    /**
+     * @author serviceweb
+     * @param request
+     * @return authentification
+     */
     private Authentication getUsernamePasswordAuthentication(HttpServletRequest request) {
         String token = request.getHeader(JwtProperties.HEADER_STRING);
 

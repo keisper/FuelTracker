@@ -7,26 +7,49 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ *
+ */
 @RestController
 @RequestMapping("/api/")
 @CrossOrigin("*")
 public class FournisseurRestController {
     private final FournisseurRepository fournisseurRepository;
 
+    /**
+     * Constructeur
+     * @param fournisseurRepository
+     */
     //contructeur
     public FournisseurRestController(FournisseurRepository fournisseurRepository) {
         this.fournisseurRepository = fournisseurRepository;
     }
 
+    /**
+     * méthode permettant d'afficher la liste des fournisseurs
+     * @return
+     */
     @GetMapping("listerFournisseur")
     public List<Fournisseur> getAllFournisseur(){
         return fournisseurRepository.findAll();
     }
 
+    /**
+     * méthode permettant d'enregistrer un fournisseur à partir du paramètre fournisseur
+     * @param fournisseur
+     * @return
+     */
     @PostMapping("creerFournisseur")
     public Fournisseur createFournisseur(@RequestBody Fournisseur fournisseur){
         return fournisseurRepository.save(fournisseur);
     }
+
+    /**
+     * méthode permettant de modifier un fournisseur enregistré en prenant en entrée l'id du fournisseur
+     * @param fournisseur
+     * @return
+     * @throws Exception
+     */
     @PutMapping("modifierFournisseur")
     public Fournisseur updateFournisseur(@RequestBody Fournisseur fournisseur) throws Exception {
         if(fournisseur.getIdFournisseur() == null){
@@ -36,6 +59,10 @@ public class FournisseurRestController {
         return fournisseurRepository.save(fournisseur);
     }
 
+    /**
+     * méthode permettant de supprimer un fournisseur enregistré en prenant en entrée l'id du fournisseur
+     * @param idFournisseur
+     */
     @DeleteMapping("supprimerFournisseur/{idFournisseur}")
     public void deleteFournisseur(@PathVariable Long idFournisseur){
         fournisseurRepository.deleteById(idFournisseur);

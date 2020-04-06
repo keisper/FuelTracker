@@ -7,27 +7,50 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ *
+ */
 @RestController
 @RequestMapping("/api/")
 @CrossOrigin("*")
 public class ProduitRestController {
     
     private final ProduitRepository produitRepository;
-    
+
+    /**
+     *
+     * @param produitRepository
+     */
     //constructeur
     public ProduitRestController(ProduitRepository produitRepository) {
         this.produitRepository = produitRepository;
     }
 
+    /**
+     * méthode permettant d'afficher la liste des produits
+     * @return
+     */
     @GetMapping("listerProduit")
     public List<Produit> getAllProduit(){
         return produitRepository.findAll();
     }
 
+    /**
+     * méthode permettant d'enregistrer un produit à partir du paramètre produit
+     * @param produit
+     * @return
+     */
     @PostMapping("creerProduit")
     public Produit createProduit(@RequestBody Produit produit){
         return produitRepository.save(produit);
     }
+
+    /**
+     * méthode permettant de modifier un produit enregistré en prenant en entrée l'id du produit
+     * @param produit
+     * @return
+     * @throws Exception
+     */
     @PutMapping("modifierProduit")
     public Produit updateProduit(@RequestBody Produit produit) throws Exception {
         if(produit.getIdProduit() == null){
@@ -37,6 +60,10 @@ public class ProduitRestController {
         return produitRepository.save(produit);
     }
 
+    /**
+     * méthode permettant de supprimer un produit enregistré en prenant en entrée l'id du produit
+     * @param idProduit
+     */
     @DeleteMapping("supprimerProduit/{idProduit}")
     public void deleteProduit(@PathVariable Long idProduit){
         produitRepository.deleteById(idProduit);
