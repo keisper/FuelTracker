@@ -13,23 +13,40 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 
-
+/**
+ *
+ */
 @Configuration
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     private UserPrincipalDetailsService userPrincipalDetailsService;
     private UtilisateurRepository utilisateurRepository;
 
+    /**
+     *
+     * @param userPrincipalDetailsService
+     * @param utilisateurRepository
+     */
     public SecurityConfiguration(UserPrincipalDetailsService userPrincipalDetailsService, UtilisateurRepository utilisateurRepository) {
         this.userPrincipalDetailsService = userPrincipalDetailsService;
         this.utilisateurRepository = utilisateurRepository;
     }
 
+    /**
+     * définir les utilisateurs et les différents rôles
+     * configurer le moyen d'authentification'
+     * @param auth
+     */
     @Override
     protected void configure(AuthenticationManagerBuilder auth) {
         auth.authenticationProvider(authenticationProvider());
     }
 
+    /**
+     * définir les accç=ès aux différentes requêtes
+     * @param http
+     * @throws Exception
+     */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
@@ -46,6 +63,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/api/**").authenticated();
     }
 
+    /**
+     *
+     * @return DaoAuthenticationProvider
+     */
     @Bean
     DaoAuthenticationProvider authenticationProvider(){
         DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
@@ -55,6 +76,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         return daoAuthenticationProvider;
     }
 
+    /**
+     *
+     * @return PasswordEncoder
+     */
     @Bean
     PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();

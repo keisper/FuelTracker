@@ -18,13 +18,29 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Objects;
 
+/**
+ * Classe permettant de générer le token
+ */
 public class JwtAuthentificationFilter extends UsernamePasswordAuthenticationFilter {
     private AuthenticationManager authenticationManager;
 
+    /**
+     *
+     * @author groupe_service
+     * @param authenticationManager
+     */
     public JwtAuthentificationFilter(AuthenticationManager authenticationManager) {
         this.authenticationManager = authenticationManager;
     }
 
+    /**
+     * charger les infos de l'utilisateur et créer le token de l'utilisateur de la base de données
+     * @author groupe_service
+     * @param request
+     * @param response
+     * @return Authentication
+     * @throws AuthenticationException
+     */
     //fonction utilisée quand on tente de se connecter
     //elle est déclenchée quand on effectue une requête POST à /login
     @Override
@@ -49,6 +65,15 @@ public class JwtAuthentificationFilter extends UsernamePasswordAuthenticationFil
 
     }
 
+    /**
+     * @author groupe_service
+     * @param request
+     * @param response
+     * @param chain
+     * @param authResult
+     * @throws IOException
+     * @throws ServletException
+     */
     //fonction utilisée quand l'authentification a réussi, on construit le token JWT
     @Override
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authResult) throws IOException, ServletException {

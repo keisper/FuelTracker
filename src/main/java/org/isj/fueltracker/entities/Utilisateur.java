@@ -31,6 +31,8 @@ public class Utilisateur implements Serializable {
     private String username;
     @Column (name = "password")
     private String password;
+    @Column (name = "email")
+    private String email;
 
 
     public enum Statut{
@@ -46,9 +48,23 @@ public class Utilisateur implements Serializable {
     public Utilisateur() {
     }
 
+    /**
+     *
+     * @param nom
+     * @param prenom
+     * @param nationalite
+     * @param pays
+     * @param adresse
+     * @param partAction
+     * @param statutUtilisateur
+     * @param roles
+     * @param username
+     * @param password
+     * @param email
+     */
     public Utilisateur(String nom, String prenom, String nationalite, String pays, String adresse,
                        float partAction, Statut statutUtilisateur, String roles,String username,
-                       String password) {
+                       String password, String email) {
         this.nom = nom;
         this.prenom = prenom;
         this.nationalite = nationalite;
@@ -59,100 +75,209 @@ public class Utilisateur implements Serializable {
         this.roles = roles;
         this.username = username;
         this.password = password;
+        this.email = email;
     }
 
+    /**
+     *
+     * @return Long
+     */
     public Long getIdUtilisateur() {
         return idUtilisateur;
     }
 
+    /**
+     *
+     * @param idUtilisateur
+     */
     public void setIdUtilisateur(Long idUtilisateur) {
         this.idUtilisateur = idUtilisateur;
     }
 
+    /**
+     *
+     * @return String
+     */
     public String getNom() {
         return nom;
     }
 
+    /**
+     *
+     * @param nom
+     */
     public void setNom(String nom) {
         this.nom = nom;
     }
 
+    /**
+     *
+     * @return String
+     */
     public String getPrenom() {
         return prenom;
     }
 
+    /**
+     *
+     * @param prenom
+     */
     public void setPrenom(String prenom) {
         this.prenom = prenom;
     }
 
+    /**
+     *
+     * @return String
+     */
     public String getNationalite() {
         return nationalite;
     }
 
+    /**
+     *
+     * @param nationalite
+     */
     public void setNationalite(String nationalite) {
         this.nationalite = nationalite;
     }
 
+    /**
+     *
+     * @return String
+     */
     public String getPays() {
         return pays;
     }
 
+    /**
+     *
+     * @param pays
+     */
     public void setPays(String pays) {
         this.pays = pays;
     }
 
+    /**
+     *
+     * @return String
+     */
     public String getAdresse() {
         return adresse;
     }
 
+    /**
+     *
+     * @param adresse
+     */
     public void setAdresse(String adresse) {
         this.adresse = adresse;
     }
 
+    /**
+     *
+     * @return float
+     */
     public float getPartAction() {
         return partAction;
     }
 
+    /**
+     *
+     * @param partAction
+     */
     public void setPartAction(float partAction) {
         this.partAction = partAction;
     }
 
+    /**
+     *
+     * @return Statut
+     */
     public Statut getStatutUtilisateur() {
         return statutUtilisateur;
     }
 
+    /**
+     *
+     * @param statutUtilisateur
+     */
     public void setStatutUtilisateur(Statut statutUtilisateur) {
         this.statutUtilisateur = statutUtilisateur;
     }
 
+    /**
+     *
+     * @return List<StationService>
+     */
     public List<StationService> getListeStations() {
         return listeStations;
     }
 
+    /**
+     *
+     * @param listeStations
+     */
     public void setListeStations(List<StationService> listeStations) {
         this.listeStations = listeStations;
     }
 
+    /**
+     *
+     * @return String
+     */
     public String getRoles() { return roles; }
 
+    /**
+     *
+     * @param roles
+     */
     public void setRoles(String roles) { this.roles = roles; }
 
+    /**
+     *
+     * @return String
+     */
     public String getUsername() {
         return username;
     }
 
+    /**
+     *
+     * @param username
+     */
     public void setUsername(String username) {
         this.username = username;
     }
 
+    /**
+     *
+     * @return String
+     */
     public String getPassword() {
         return password;
     }
 
+    /**
+     *
+     * @param password
+     */
     public void setPassword(String password) {
         this.password = password;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    /**
+     *
+     * @return List<String>
+     */
     public List<String> getRoleList(){
         if (this.roles.length() > 0){
             return Arrays.asList(this.roles.split(","));
