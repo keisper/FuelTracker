@@ -6,6 +6,7 @@ import org.isj.fueltracker.repositories.CommamdeRepository;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/")
@@ -67,5 +68,10 @@ public class CommandeRestController {
     @DeleteMapping("supprimerCommande/{idCommande}")
     public void deleteCommande(@PathVariable Long idCommande){
         commamdeRepository.deleteById(idCommande);
+    }
+
+    @GetMapping("retrouverCommandeById/{idCommande}")
+    public Optional<Commande> getIdCommande(@PathVariable Long idCommande){
+        return commamdeRepository.findById(idCommande);
     }
 }

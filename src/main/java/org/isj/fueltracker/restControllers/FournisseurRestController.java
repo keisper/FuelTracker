@@ -6,6 +6,7 @@ import org.isj.fueltracker.repositories.FournisseurRepository;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  *
@@ -66,5 +67,10 @@ public class FournisseurRestController {
     @DeleteMapping("supprimerFournisseur/{idFournisseur}")
     public void deleteFournisseur(@PathVariable Long idFournisseur){
         fournisseurRepository.deleteById(idFournisseur);
+    }
+
+    @GetMapping("retrouverFournisseurById/{idFournisseur}")
+    public Optional<Fournisseur> getIdFournisseur(@PathVariable Long idFournisseur){
+        return fournisseurRepository.findById(idFournisseur);
     }
 }

@@ -6,6 +6,7 @@ import org.isj.fueltracker.repositories.StationServiceRepository;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  *
@@ -68,4 +69,10 @@ public class StationServiceRestController {
     public void deleteStationService(@PathVariable Long idStation){
         stationServiceRepository.deleteById(idStation);
     }
+
+    @GetMapping("retrouverStationServiceById/{idStation}")
+    public Optional<StationService> getIdStation(@PathVariable Long idStation){
+        return stationServiceRepository.findById(idStation);
+    }
+
 }

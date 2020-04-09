@@ -36,7 +36,7 @@ public class DbInit implements CommandLineRunner {
 
         Utilisateur utilisateur = new Utilisateur("Tiyouh","keisper","Cameroun","Cameroun","Manguier",
                 12, Utilisateur.Statut.Personne_Morale,"ADMIN",
-                "keisper",passwordEncoder.encode("keisper"));
+                "keisper",passwordEncoder.encode("keisper"),"");
 
         utilisateurRepository.save(utilisateur);
     }

@@ -6,6 +6,7 @@ import org.isj.fueltracker.repositories.UtilisateurRepository;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/")
@@ -69,5 +70,10 @@ public class UtilisateurRestController {
     @DeleteMapping("supprimerUtilisateur/{idUtilisateur}")
     public void deleteUtilisateur(@PathVariable Long idUtilisateur){
         utilisateurRepository.deleteById(idUtilisateur);
+    }
+
+    @GetMapping("retrouverUtilisateurById/{idUtilisateur}")
+    public Optional<Utilisateur> getIdUtilisateur(@PathVariable Long idUtilisateur){
+        return utilisateurRepository.findById(idUtilisateur);
     }
 }

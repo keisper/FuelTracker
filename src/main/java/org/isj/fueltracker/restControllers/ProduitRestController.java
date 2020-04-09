@@ -6,6 +6,7 @@ import org.isj.fueltracker.repositories.ProduitRepository;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  *
@@ -67,5 +68,10 @@ public class ProduitRestController {
     @DeleteMapping("supprimerProduit/{idProduit}")
     public void deleteProduit(@PathVariable Long idProduit){
         produitRepository.deleteById(idProduit);
+    }
+
+    @GetMapping("retrouverProduitById/{idProduit}")
+    public Optional<Produit> getIdProduit(@PathVariable Long idProduit){
+        return produitRepository.findById(idProduit);
     }
 }

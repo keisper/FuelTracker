@@ -5,6 +5,7 @@ import org.isj.fueltracker.repositories.PaiementRepository;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  *
@@ -65,5 +66,10 @@ public class PaiementRestController {
     @DeleteMapping("supprimerPaiement/{idPaiement}")
     public void deletePaiement(@PathVariable Long idPaiement){
         paiementRepository.deleteById(idPaiement);
+    }
+
+    @GetMapping("retrouverPaiementById/{idPaiement}")
+    public Optional<Paiement> getIdPaiement(@PathVariable Long idPaiement){
+        return paiementRepository.findById(idPaiement);
     }
 }
