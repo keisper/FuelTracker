@@ -266,10 +266,18 @@ public class Utilisateur implements Serializable {
         this.password = password;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getEmail() {
         return email;
     }
 
+    /**
+     *
+     * @param email
+     */
     public void setEmail(String email) {
         this.email = email;
     }

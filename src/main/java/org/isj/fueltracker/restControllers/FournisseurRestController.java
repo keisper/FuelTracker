@@ -71,6 +71,6 @@ public class FournisseurRestController {
 
     @GetMapping("retrouverFournisseurById/{idFournisseur}")
     public Optional<Fournisseur> getIdFournisseur(@PathVariable Long idFournisseur){
-        return fournisseurRepository.findById(idFournisseur);
+        return fournisseurRepository.findByIdFournisseur(idFournisseur);
     }
 }

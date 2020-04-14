@@ -72,6 +72,6 @@ public class CommandeRestController {
 
     @GetMapping("retrouverCommandeById/{idCommande}")
     public Optional<Commande> getIdCommande(@PathVariable Long idCommande){
-        return commamdeRepository.findById(idCommande);
+        return commamdeRepository.findByIdCommande(idCommande);
     }
 }

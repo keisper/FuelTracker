@@ -8,11 +8,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-/**
- *
- */
 @Entity
-@Table(name = "commande")
 public class Commande implements Serializable {
 
     @Id
@@ -24,21 +20,38 @@ public class Commande implements Serializable {
 
     @DateTimeFormat(pattern = "dd-MM-yyyy")
     private Date dateLivraison;
-
+    @Column (name = "volumeCommande")
     private float volumeCommande;
+    @Column (name = "volumeLivre")
     private float volumeLivre;
-    public enum TypeCarburantLivre{
-        Gazoil, Essence
+    @Column (name = "prixTotal")
+    private int prixTotal;
+    @Column (name = "ristourne")
+    private int ristourne;
+    public enum Statut{
+        enregistrer, commander, livrer
     }
 
     @Enumerated(EnumType.STRING)
-    private TypeCarburantLivre typeCarburantLivre;
+    private Statut statut;
+
+    public enum Paiement{
+        EnCours, Effectué, NonEffectué
+    }
+
+    @Enumerated(EnumType.STRING)
+    private Paiement paiement;
 
     @ManyToOne
+    @JoinColumn(name="idFournisseur")
     private Fournisseur fournisseur;
 
+    @ManyToOne
+    @JoinColumn(name="idStation")
+    private StationService stationService;
+
     @OneToMany(mappedBy = "commande")
-    private List<Paiement> listePaiementsEffectues = new ArrayList<>();
+    private List<LigneCommande> listeLigneCommandes = new ArrayList<>();
 
     public Commande() {
     }
@@ -49,16 +62,20 @@ public class Commande implements Serializable {
      * @param dateLivraison
      * @param volumeCommande
      * @param volumeLivre
-     * @param typeCarburantLivre
-     * @param fournisseur
+     * @param prixTotal
+     * @param ristourne
+     * @param statut
+     * @param paiement
      */
-    public Commande(Date dateCommande, Date dateLivraison, float volumeCommande, float volumeLivre, TypeCarburantLivre typeCarburantLivre, Fournisseur fournisseur) {
+    public Commande(Date dateCommande, Date dateLivraison, float volumeCommande, float volumeLivre, int prixTotal, int ristourne, Statut statut, Paiement paiement) {
         this.dateCommande = dateCommande;
         this.dateLivraison = dateLivraison;
         this.volumeCommande = volumeCommande;
         this.volumeLivre = volumeLivre;
-        this.typeCarburantLivre = typeCarburantLivre;
-        this.fournisseur = fournisseur;
+        this.prixTotal = prixTotal;
+        this.ristourne = ristourne;
+        this.statut = statut;
+        this.paiement = paiement;
     }
 
     /**
@@ -143,22 +160,6 @@ public class Commande implements Serializable {
 
     /**
      *
-     * @return
-     */
-    public TypeCarburantLivre getTypeCarburantLivre() {
-        return typeCarburantLivre;
-    }
-
-    /**
-     *
-     * @param typeCarburantLivre
-     */
-    public void setTypeCarburantLivre(TypeCarburantLivre typeCarburantLivre) {
-        this.typeCarburantLivre = typeCarburantLivre;
-    }
-
-    /**
-     *
      * @return Fournisseur
      */
     public Fournisseur getFournisseur() {
@@ -175,17 +176,98 @@ public class Commande implements Serializable {
 
     /**
      *
-     * @return List<Paiement>
+     * @return int
      */
-    public List<Paiement> getListePaiementsEffectues() {
-        return listePaiementsEffectues;
+    public int getPrixTotal() {
+        return prixTotal;
     }
 
     /**
      *
-     * @param listePaiementsEffectues
+     * @param prixTotal
      */
-    public void setListePaiementsEffectues(List<Paiement> listePaiementsEffectues) {
-        this.listePaiementsEffectues = listePaiementsEffectues;
+    public void setPrixTotal(int prixTotal) {
+        this.prixTotal = prixTotal;
     }
+
+    /**
+     *
+     * @return int
+     */
+    public int getRistourne() {
+        return ristourne;
+    }
+
+    /**
+     *
+     * @param ristourne
+     */
+    public void setRistourne(int ristourne) {
+        this.ristourne = ristourne;
+    }
+
+    /**
+     *
+     * @return Statut
+     */
+    public Statut getStatut() {
+        return statut;
+    }
+
+    /**
+     *
+     * @param statut
+     */
+    public void setStatut(Statut statut) {
+        this.statut = statut;
+    }
+
+    /**
+     *
+     * @return StationService
+     */
+    public StationService getStationService() {
+        return stationService;
+    }
+
+    /**
+     *
+     * @param stationService
+     */
+    public void setStationService(StationService stationService) {
+        this.stationService = stationService;
+    }
+
+    /**
+     *
+     * @return List<LigneCommande>
+     */
+    public List<LigneCommande> getListeLigneCommandes() {
+        return listeLigneCommandes;
+    }
+
+    /**
+     *
+     * @param listeLigneCommandes
+     */
+    public void setListeLigneCommandes(List<LigneCommande> listeLigneCommandes) {
+        this.listeLigneCommandes = listeLigneCommandes;
+    }
+
+    /**
+     *
+     * @return Paiement
+     */
+    public Paiement getPaiement() {
+        return paiement;
+    }
+
+    /**
+     *
+     * @param paiement
+     */
+    public void setPaiement(Paiement paiement) {
+        this.paiement = paiement;
+    }
+
 }
