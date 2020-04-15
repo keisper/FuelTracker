@@ -25,16 +25,16 @@ public class StationService implements Serializable {
     private TypeCarburant typeCarburant;
 
     @ManyToMany
-    private List<Utilisateur> listeUtilisateurs = new ArrayList<>();
-
-    @ManyToMany
-    private List<Fournisseur> listeFournisseurs = new ArrayList<>();
+    private List<Utilisateur> listeActionnaires = new ArrayList<>();
 
     @ManyToOne
-    private Produit produit;
+    private Fournisseur fournisseur;
 
-    @OneToOne
-    private Paiement paiement;
+    @OneToMany(mappedBy = "stationService")
+    private List<Pompe> pompe = new ArrayList<>();
+
+    @OneToMany(mappedBy = "stationService")
+    private List<Commande> commande = new ArrayList<>();
 
     public StationService() {
     }
@@ -44,13 +44,11 @@ public class StationService implements Serializable {
      * @param nom
      * @param adresse
      * @param typeCarburant
-     * @param paiement
      */
-    public StationService(String nom, String adresse, TypeCarburant typeCarburant, Paiement paiement) {
+    public StationService(String nom, String adresse, TypeCarburant typeCarburant) {
         this.nom = nom;
         this.adresse = adresse;
         this.typeCarburant = typeCarburant;
-        this.paiement = paiement;
     }
 
     /**
@@ -119,10 +117,43 @@ public class StationService implements Serializable {
 
     /**
      *
+     * @return
+     */
+    public List<Commande> getCommande() {
+        return commande;
+    }
+
+    /**
+     *
+     * @param commande
+     */
+    public void setCommande(List<Commande> commande) {
+        this.commande = commande;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public List<Pompe> getPompe() {
+        return pompe;
+    }
+
+    /**
+     *
+     * @param pompe
+     */
+    public void setPompe(List<Pompe> pompe) {
+        this.pompe = pompe;
+    }
+
+    /**
+     *
      * @return List<Utilisateur>
      */
+
     public List<Utilisateur> getListeUtilisateurs() {
-        return listeUtilisateurs;
+        return listeActionnaires;
     }
 
     /**
@@ -130,40 +161,7 @@ public class StationService implements Serializable {
      * @param listeUtilisateurs
      */
     public void setListeUtilisateurs(List<Utilisateur> listeUtilisateurs) {
-        this.listeUtilisateurs = listeUtilisateurs;
+        this.listeActionnaires = listeUtilisateurs;
     }
-
-    /**
-     *
-     * @return List<Fournisseur>
-     */
-    public List<Fournisseur> getListeFournisseurs() {
-        return listeFournisseurs;
-    }
-
-    /**
-     *
-     * @param listeFournisseurs
-     */
-    public void setListeFournisseurs(List<Fournisseur> listeFournisseurs) {
-        this.listeFournisseurs = listeFournisseurs;
-    }
-
-    /**
-     *
-     * @return Paiement
-     */
-    public Paiement getPaiement() {
-        return paiement;
-    }
-
-    /**
-     *
-     * @param paiement
-     */
-    public void setPaiement(Paiement paiement) {
-        this.paiement = paiement;
-    }
-
 
 }

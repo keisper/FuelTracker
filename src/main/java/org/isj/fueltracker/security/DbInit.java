@@ -35,13 +35,12 @@ public class DbInit implements CommandLineRunner {
     public void run(String... args)  {
 
         utilisateurRepository.deleteAll();
-        Utilisateur utilisateur = new Utilisateur("Tiyouh","keisper","Cameroun","Cameroun","Manguier",
 
-                "keisper",bCryptPasswordEncoder.encode("keisper"));
-
-                "keisper",passwordEncoder.encode("keisper"),"");
-
+        Utilisateur utilisateur = new Utilisateur("TIYOUH","Keisper","Camerounais","Cameroun","Yaoundé",12,
+                Utilisateur.Statut.Personne_Morale,"ADMIN","keisper",bCryptPasswordEncoder.encode("keisper1234"),
+                "keisper99@gmail.com",true);
 
         utilisateurRepository.save(utilisateur);
+
     }
 }

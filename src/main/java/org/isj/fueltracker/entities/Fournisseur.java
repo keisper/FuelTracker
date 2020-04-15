@@ -14,18 +14,16 @@ public class Fournisseur implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long idFournisseur;
-
+    @Column (name = "nom")
     private String nom;
+    @Column (name = "adresse")
     private String adresse;
-
-    @ManyToMany
-    private List<StationService> listeStationsFournies = new ArrayList<>();
 
     @OneToMany(mappedBy = "fournisseur")
     private List<Commande> listeCommandes = new ArrayList<>();
 
-    @ManyToMany
-    private List<Produit> listeProduits = new ArrayList<>();
+    @OneToMany(mappedBy = "fournisseur")
+    private List<StationService> listeStations = new ArrayList<>();
 
     public Fournisseur() {
     }
@@ -92,16 +90,16 @@ public class Fournisseur implements Serializable {
      *
      * @return List<StationService>
      */
-    public List<StationService> getListeStationsFournies() {
-        return listeStationsFournies;
+    public List<StationService> getListeStations() {
+        return listeStations;
     }
 
     /**
      *
-     * @param listeStationsFournies
+     * @param listeStations
      */
-    public void setListeStationsFournies(List<StationService> listeStationsFournies) {
-        this.listeStationsFournies = listeStationsFournies;
+    public void setListeStations(List<StationService> listeStations) {
+        this.listeStations = listeStations;
     }
 
     /**
@@ -120,19 +118,4 @@ public class Fournisseur implements Serializable {
         this.listeCommandes = listeCommandes;
     }
 
-    /**
-     *
-     * @return List<Produit>
-     */
-    public List<Produit> getListeProduits() {
-        return listeProduits;
-    }
-
-    /**
-     *
-     * @param listeProduits
-     */
-    public void setListeProduits(List<Produit> listeProduits) {
-        this.listeProduits = listeProduits;
-    }
 }

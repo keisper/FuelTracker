@@ -33,6 +33,8 @@ public class Utilisateur implements Serializable {
     private String password;
     @Column (name = "email")
     private String email;
+    @Column (name = "active",nullable = false)
+    private Boolean active;
 
 
     public enum Statut{
@@ -49,8 +51,7 @@ public class Utilisateur implements Serializable {
     }
 
     /**
-     *
-     * @param nom
+     *  @param nom
      * @param prenom
      * @param nationalite
      * @param pays
@@ -61,10 +62,11 @@ public class Utilisateur implements Serializable {
      * @param username
      * @param password
      * @param email
+     * @param active
      */
     public Utilisateur(String nom, String prenom, String nationalite, String pays, String adresse,
-                       float partAction, Statut statutUtilisateur, String roles,String username,
-                       String password, String email) {
+                       float partAction, Statut statutUtilisateur, String roles, String username,
+                       String password, String email, Boolean active) {
         this.nom = nom;
         this.prenom = prenom;
         this.nationalite = nationalite;
@@ -76,6 +78,7 @@ public class Utilisateur implements Serializable {
         this.username = username;
         this.password = password;
         this.email = email;
+        this.active = active;
     }
 
     /**
@@ -266,12 +269,36 @@ public class Utilisateur implements Serializable {
         this.password = password;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getEmail() {
         return email;
     }
 
+    /**
+     *
+     * @param email
+     */
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public Boolean getActive() {
+        return active;
+    }
+
+    /**
+     *
+     * @param active
+     */
+    public void setActive(Boolean active) {
+        this.active = active;
     }
 
     /**

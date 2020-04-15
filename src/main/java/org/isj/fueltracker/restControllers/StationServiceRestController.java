@@ -72,7 +72,7 @@ public class StationServiceRestController {
 
     @GetMapping("retrouverStationServiceById/{idStation}")
     public Optional<StationService> getIdStation(@PathVariable Long idStation){
-        return stationServiceRepository.findById(idStation);
+        return stationServiceRepository.findByIdStation(idStation);
     }
 
 }

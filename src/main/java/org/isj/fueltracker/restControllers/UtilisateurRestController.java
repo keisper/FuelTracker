@@ -74,6 +74,6 @@ public class UtilisateurRestController {
 
     @GetMapping("retrouverUtilisateurById/{idUtilisateur}")
     public Optional<Utilisateur> getIdUtilisateur(@PathVariable Long idUtilisateur){
-        return utilisateurRepository.findById(idUtilisateur);
+        return utilisateurRepository.findByIdUtilisateur(idUtilisateur);
     }
 }
