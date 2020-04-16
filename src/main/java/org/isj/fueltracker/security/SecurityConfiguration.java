@@ -58,9 +58,16 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .addFilter(new JwtAuthentificationFilter(authenticationManager()))
                 .addFilter(new JwtAuthorizationFilter(authenticationManager(),  this.utilisateurRepository))
                 .authorizeRequests()
+                .antMatchers("/api/**").authenticated()
                 // configure access rules
-                .antMatchers( "/login").permitAll()
-                .antMatchers("/api/**").authenticated();
+                .and()
+                .formLogin()
+                .loginPage("/login")
+                .defaultSuccessUrl("/index")
+                .failureUrl("/login")
+                .permitAll();
+                //.antMatchers( "/login").permitAll()
+
     }
 
     /**

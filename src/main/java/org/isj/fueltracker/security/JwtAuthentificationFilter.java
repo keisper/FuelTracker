@@ -85,7 +85,6 @@ public class JwtAuthentificationFilter extends UsernamePasswordAuthenticationFil
               .withExpiresAt(new Date(System.currentTimeMillis() + JwtProperties.DATE_EXPIRATION))
               .sign(Algorithm.HMAC512(JwtProperties.SECRET));
         //on ajoute ce token à l'en tête de la requête http
-      response.addHeader(JwtProperties.HEADER_STRING,JwtProperties.TOKEN_PREFIX + token);
-
+      response.addHeader(JwtProperties.HEADER_STRING,JwtProperties.TOKEN_PREFIX + token + userPrincipal.utilisateur.getIdUtilisateur());
     }
 }
