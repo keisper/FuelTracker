@@ -9,14 +9,13 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/")
+@RequestMapping("/api/commande")
 @CrossOrigin("*")
 public class CommandeRestController {
 
     private final CommamdeRepository commamdeRepository;
 
     /**
-     * localhost:8085/fueltracker/api/listerCommande
      * @param commamdeRepository
      */
     public CommandeRestController(CommamdeRepository commamdeRepository) {

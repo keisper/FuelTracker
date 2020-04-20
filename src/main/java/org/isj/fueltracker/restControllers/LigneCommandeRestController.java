@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/")
+@RequestMapping("/api/ligneCommande")
 @CrossOrigin("*")
 public class LigneCommandeRestController {
 

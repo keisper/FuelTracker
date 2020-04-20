@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-public class Index implements Serializable{
+public class IndexCarburant implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -22,7 +22,7 @@ public class Index implements Serializable{
     @ManyToOne
     private Reservoir reservoir;
 
-    public Index(){
+    public IndexCarburant(){
 
     }
 
@@ -32,7 +32,7 @@ public class Index implements Serializable{
      * @param numero
      * @param volumeVendu
      */
-    public Index(String description, int numero, int volumeVendu) {
+    public IndexCarburant(String description, int numero, int volumeVendu) {
         this.description = description;
         this.numero = numero;
         this.volumeVendu = volumeVendu;

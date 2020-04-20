@@ -17,7 +17,7 @@ public class Pompe implements Serializable {
     private String libelle;
 
     @OneToMany(mappedBy = "pompe")
-    private List<Index> listindex = new ArrayList<>();
+    private List<IndexCarburant> listindex = new ArrayList<>();
 
     @ManyToOne
     private StationService stationService;
@@ -87,9 +87,9 @@ public class Pompe implements Serializable {
 
     /**
      *
-     * @return List<Index>
+     * @return List<IndexCarburant>
      */
-    public List<Index> getListindex() {
+    public List<IndexCarburant> getListindex() {
         return listindex;
     }
 
@@ -97,7 +97,7 @@ public class Pompe implements Serializable {
      *
      * @param listindex
      */
-    public void setListindex(List<Index> listindex) {
+    public void setListindex(List<IndexCarburant> listindex) {
         this.listindex = listindex;
     }
 

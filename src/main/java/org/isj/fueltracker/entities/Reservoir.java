@@ -17,7 +17,7 @@ public class Reservoir implements Serializable {
     private int volumeReservoir;
 
     @OneToMany(mappedBy = "reservoir")
-    private List<Index> listindex = new ArrayList<>();
+    private List<IndexCarburant> listindex = new ArrayList<>();
 
     @ManyToOne
     private TypeCarburant typeCarburant;
@@ -86,9 +86,9 @@ public class Reservoir implements Serializable {
 
     /**
      *
-     * @return List<Index>
+     * @return List<IndexCarburant>
      */
-    public List<Index> getListindex() {
+    public List<IndexCarburant> getListindex() {
         return listindex;
     }
 
@@ -96,7 +96,7 @@ public class Reservoir implements Serializable {
      *
      * @param listindex
      */
-    public void setListindex(List<Index> listindex) {
+    public void setListindex(List<IndexCarburant> listindex) {
         this.listindex = listindex;
     }
 

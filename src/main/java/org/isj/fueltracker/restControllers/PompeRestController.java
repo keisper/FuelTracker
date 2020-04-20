@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/")
+@RequestMapping("/api/pompe")
 @CrossOrigin("*")
 public class PompeRestController {
 

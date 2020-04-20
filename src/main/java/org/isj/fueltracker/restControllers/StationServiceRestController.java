@@ -12,7 +12,7 @@ import java.util.Optional;
  *
  */
 @RestController
-@RequestMapping("/api/")
+@RequestMapping("/api/stationService")
 @CrossOrigin("*")
 public class StationServiceRestController {
 
