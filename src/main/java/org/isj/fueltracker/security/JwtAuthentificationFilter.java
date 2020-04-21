@@ -78,14 +78,13 @@ public class JwtAuthentificationFilter extends UsernamePasswordAuthenticationFil
     @Override
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authResult) throws IOException, ServletException {
       UserPrincipal userPrincipal = (UserPrincipal) authResult.getPrincipal();
-
       //On crée le jwt token
       String token = JWT.create()
               .withSubject(userPrincipal.getUsername())
               .withExpiresAt(new Date(System.currentTimeMillis() + JwtProperties.DATE_EXPIRATION))
               .sign(Algorithm.HMAC512(JwtProperties.SECRET));
         //on ajoute ce token à l'en tête de la requête http
-      response.addHeader(JwtProperties.HEADER_STRING,JwtProperties.TOKEN_PREFIX + token);
-
+      response.addHeader(JwtProperties.HEADER_STRING ,JwtProperties.TOKEN_PREFIX + token);
+      response.addHeader(JwtProperties.STRING_PREFIX,String.valueOf(userPrincipal.utilisateur.getIdUtilisateur()));
     }
 }

@@ -8,4 +8,5 @@ public class JwtProperties {
     public static final int DATE_EXPIRATION = 432000000;
     public static final String TOKEN_PREFIX = "Bearer ";
     public static final String HEADER_STRING = "Authorization";
+    public static final String STRING_PREFIX = "id_User: ";
 }

@@ -1,9 +1,9 @@
 package org.isj.fueltracker.restControllers;
 
 
-import net.minidev.json.JSONObject;
 import org.isj.fueltracker.entities.Utilisateur;
 import org.isj.fueltracker.repositories.UtilisateurRepository;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,6 +15,7 @@ import java.util.Optional;
 public class UtilisateurRestController {
     
     private final UtilisateurRepository utilisateurRepository;
+    private BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
 
     /**
      *
@@ -23,6 +24,7 @@ public class UtilisateurRestController {
     //contructeur
     public UtilisateurRestController(UtilisateurRepository utilisateurRepository) {
         this.utilisateurRepository = utilisateurRepository;
+
     }
 
     /**
@@ -34,9 +36,9 @@ public class UtilisateurRestController {
         return utilisateurRepository.findAll();
     }
 
-    @GetMapping("retrouverUtilisateurByLoginAndPassword/{login}/{password}")
-    public Utilisateur getUtilisateurByUsernameAndPassword(@PathVariable String login, @PathVariable String password){
-        return utilisateurRepository.findByUsernameAndPassword(login, password);
+    @GetMapping("loginUtilisateur/{username}/{password}")
+    public Utilisateur loginUser(@PathVariable String username, @PathVariable String password){
+        return utilisateurRepository.findByUsernameAndPassword(username, password);
     }
 
     /**
@@ -49,12 +51,6 @@ public class UtilisateurRestController {
         utilisateur.setActive(true);
         return utilisateurRepository.save(utilisateur);
     }
-
-    @RequestMapping("getString")
-    public String getString(){
-        return JSONObject.escape("Hello!");
-    }
-
 
     /**
      * méthode permettant de modifier un utilisateur enregistré en prenant en entrée l'id de l'utilisateur

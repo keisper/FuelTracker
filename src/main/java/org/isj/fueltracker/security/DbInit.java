@@ -19,9 +19,8 @@ public class DbInit implements CommandLineRunner {
      * @author  groupe_service
      * Constructeur
      * @param utilisateurRepository
-     * @param passwordEncoder
      */
-    public DbInit(UtilisateurRepository utilisateurRepository, PasswordEncoder passwordEncoder) {
+    public DbInit(UtilisateurRepository utilisateurRepository) {
         this.utilisateurRepository = utilisateurRepository;
 
     }
@@ -36,7 +35,9 @@ public class DbInit implements CommandLineRunner {
 
         utilisateurRepository.deleteAll();
         Utilisateur utilisateur = new Utilisateur("Tiyouh","keisper","Cameroun","Cameroun","Manguier",12, Utilisateur.Statut.Personne_Morale,"ADMIN","keisper",bCryptPasswordEncoder.encode("keisper"),"",true);
+        Utilisateur utilisateur1 = new Utilisateur("TIMAMO","Marion","Cameroun","Cameroun","Manguier",12, Utilisateur.Statut.Personne_Morale,"ADMIN","marion","marion","",true);
 
         utilisateurRepository.save(utilisateur);
+        utilisateurRepository.save(utilisateur1);
     }
 }

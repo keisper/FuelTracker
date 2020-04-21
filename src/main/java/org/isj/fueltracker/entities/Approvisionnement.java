@@ -17,7 +17,7 @@ public class Approvisionnement implements Serializable {
 
     @ManyToOne
     @JoinColumn(name="idIndex")
-    private Index index;
+    private IndexCarburant indexCarburant;
 
     @ManyToOne
     @JoinColumn(name="idReservoir")
@@ -28,10 +28,10 @@ public class Approvisionnement implements Serializable {
         this.volume = volume;
     }
 
-    public Approvisionnement(Date dateApprovi, int volume, Index index, Reservoir reservoir) {
+    public Approvisionnement(Date dateApprovi, int volume, IndexCarburant indexCarburant, Reservoir reservoir) {
         this.dateApprovi = dateApprovi;
         this.volume = volume;
-        this.index = index;
+        this.indexCarburant = indexCarburant;
         this.reservoir = reservoir;
     }
 
