@@ -1,12 +1,20 @@
 package org.isj.fueltracker.restControllers;
 
 
-import net.minidev.json.JSONObject;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.isj.fueltracker.entities.Utilisateur;
 import org.isj.fueltracker.repositories.UtilisateurRepository;
+import org.isj.fueltracker.security.LoginViewModel;
+import org.isj.fueltracker.security.UserPrincipal;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @RestController
@@ -15,6 +23,8 @@ import java.util.Optional;
 public class UtilisateurRestController {
     
     private final UtilisateurRepository utilisateurRepository;
+    private AuthenticationManager authenticationManager;
+
 
     /**
      *
@@ -34,9 +44,9 @@ public class UtilisateurRestController {
         return utilisateurRepository.findAll();
     }
 
-    @GetMapping("retrouverUtilisateurByLoginAndPassword/{login}/{password}")
-    public Utilisateur getUtilisateurByUsernameAndPassword(@PathVariable String login, @PathVariable String password){
-        return utilisateurRepository.findByUsernameAndPassword(login, password);
+    @GetMapping("loginUtilisateur/{username}/{password}")
+    public Utilisateur loginUser(@PathVariable String username, @PathVariable String password){
+        return utilisateurRepository.findByUsernameAndPassword(username, password);
     }
 
     /**
@@ -50,12 +60,6 @@ public class UtilisateurRestController {
         return utilisateurRepository.save(utilisateur);
     }
 
-    @RequestMapping("getString")
-    public String getString(){
-        return JSONObject.escape("Hello!");
-    }
-
-
     /**
      * méthode permettant de modifier un utilisateur enregistré en prenant en entrée l'id de l'utilisateur
      * @param utilisateur
@@ -64,11 +68,12 @@ public class UtilisateurRestController {
      */
     @PutMapping("modifierUtilisateur")
     public Utilisateur updateUtilisateur(@RequestBody Utilisateur utilisateur) throws Exception {
-        if(utilisateur.getIdUtilisateur() == null){
-            throw new Exception("Utilisateur non existant");
+        if (utilisateurRepository.findById(utilisateur.getIdUtilisateur()).isPresent()){
+            //Utilisateur utilisateur1 = utilisateurRepository.findById(utilisateur.getIdUtilisateur()).get();
+            return utilisateurRepository.save(utilisateur);
+        }else {
+            return null;
         }
-
-        return utilisateurRepository.save(utilisateur);
     }
 
     /**

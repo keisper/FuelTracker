@@ -35,7 +35,7 @@ public class DbInit implements CommandLineRunner {
     public void run(String... args)  {
 
         utilisateurRepository.deleteAll();
-        Utilisateur utilisateur = new Utilisateur("Tiyouh","keisper","Cameroun","Cameroun","Manguier",12, Utilisateur.Statut.Personne_Morale,"ADMIN","keisper",bCryptPasswordEncoder.encode("keisper"),"",true);
+        Utilisateur utilisateur = new Utilisateur("Tiyouh","keisper","Cameroun","Cameroun","Manguier",12, Utilisateur.Statut.Personne_Morale,"ADMIN","keisper","keisper","",true);
 
         utilisateurRepository.save(utilisateur);
     }

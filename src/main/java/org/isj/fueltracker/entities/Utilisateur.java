@@ -1,5 +1,7 @@
 package org.isj.fueltracker.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -45,6 +47,7 @@ public class Utilisateur implements Serializable {
     private Statut statutUtilisateur;
 
     @ManyToMany
+    @JsonIgnore
     private List<StationService> listeStations = new ArrayList<>();
 
     public Utilisateur() {
@@ -301,14 +304,5 @@ public class Utilisateur implements Serializable {
         this.active = active;
     }
 
-    /**
-     *
-     * @return List<String>
-     */
-    public List<String> getRoleList(){
-        if (this.roles.length() > 0){
-            return Arrays.asList(this.roles.split(","));
-        }
-        return new ArrayList<>();
-    }
+
 }

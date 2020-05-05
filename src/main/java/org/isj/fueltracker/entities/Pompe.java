@@ -1,5 +1,7 @@
 package org.isj.fueltracker.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -17,6 +19,7 @@ public class Pompe implements Serializable {
     private String libelle;
 
     @OneToMany(mappedBy = "pompe")
+    @JsonIgnore
     private List<IndexCarburant> listindex = new ArrayList<>();
 
     @ManyToOne

@@ -1,12 +1,16 @@
 package org.isj.fueltracker.restControllers;
 
 
+import org.isj.fueltracker.entities.Pompe;
+import org.isj.fueltracker.entities.Reservoir;
 import org.isj.fueltracker.entities.StationService;
+import org.isj.fueltracker.entities.Utilisateur;
+import org.isj.fueltracker.repositories.PompeRepository;
+import org.isj.fueltracker.repositories.ReservoirRepository;
 import org.isj.fueltracker.repositories.StationServiceRepository;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 /**
  *
@@ -17,14 +21,20 @@ import java.util.Optional;
 public class StationServiceRestController {
 
     private final StationServiceRepository stationServiceRepository;
+    private ReservoirRepository reservoirRepository;
+    private PompeRepository pompeRepository;
 
     /**
      *
      * @param stationServiceRepository
+     * @param reservoirRepository
+     * @param pompeRepository
      */
     //constructeur
-    public StationServiceRestController(StationServiceRepository stationServiceRepository) {
+    public StationServiceRestController(StationServiceRepository stationServiceRepository, ReservoirRepository reservoirRepository, PompeRepository pompeRepository) {
         this.stationServiceRepository = stationServiceRepository;
+        this.reservoirRepository = reservoirRepository;
+        this.pompeRepository = pompeRepository;
     }
 
     /**
@@ -33,7 +43,12 @@ public class StationServiceRestController {
      */
     @GetMapping("listerStationService")
     public List<StationService> getAllStationService(){
-        return stationServiceRepository.findAll();
+        List<StationService> stations = stationServiceRepository.findAll();
+
+        for (StationService s : stations){
+            s.getFournisseur();
+        }
+        return stations;
     }
 
     /**
@@ -71,8 +86,18 @@ public class StationServiceRestController {
     }
 
     @GetMapping("retrouverStationServiceById/{idStation}")
-    public Optional<StationService> getIdStation(@PathVariable Long idStation){
+    public StationService getIdStation(@PathVariable Long idStation){
         return stationServiceRepository.findByIdStation(idStation);
     }
 
+    @PostMapping("enregistrement")
+    public void save(@RequestBody StationService stationService, @RequestBody Pompe pompe, @RequestBody Reservoir reservoir){
+
+    }
+
+    @PostMapping("actionnairesStation")
+    public void saveAct(@RequestBody StationService stationService, @RequestBody List<Utilisateur> users){
+        stationService.setListeActionnaires(users);
+        stationServiceRepository.save(stationService);
+    }
 }

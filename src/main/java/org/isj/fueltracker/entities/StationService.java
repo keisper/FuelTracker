@@ -1,5 +1,7 @@
 package org.isj.fueltracker.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -25,15 +27,18 @@ public class StationService implements Serializable {
     private TypeCarburant typeCarburant;
 
     @ManyToMany
+    @JsonIgnore
     private List<Utilisateur> listeActionnaires = new ArrayList<>();
 
     @ManyToOne
     private Fournisseur fournisseur;
 
     @OneToMany(mappedBy = "stationService")
+    @JsonIgnore
     private List<Pompe> pompe = new ArrayList<>();
 
     @OneToMany(mappedBy = "stationService")
+    @JsonIgnore
     private List<Commande> commande = new ArrayList<>();
 
     public StationService() {
@@ -164,4 +169,19 @@ public class StationService implements Serializable {
         this.listeActionnaires = listeUtilisateurs;
     }
 
+    public List<Utilisateur> getListeActionnaires() {
+        return listeActionnaires;
+    }
+
+    public void setListeActionnaires(List<Utilisateur> listeActionnaires) {
+        this.listeActionnaires = listeActionnaires;
+    }
+
+    public Fournisseur getFournisseur() {
+        return fournisseur;
+    }
+
+    public void setFournisseur(Fournisseur fournisseur) {
+        this.fournisseur = fournisseur;
+    }
 }

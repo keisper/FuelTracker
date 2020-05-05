@@ -2,10 +2,10 @@ package org.isj.fueltracker.restControllers;
 
 import org.isj.fueltracker.entities.Pompe;
 import org.isj.fueltracker.repositories.PompeRepository;
+import org.isj.fueltracker.repositories.StationServiceRepository;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/pompe")
@@ -13,9 +13,11 @@ import java.util.Optional;
 public class PompeRestController {
 
     private final PompeRepository pompeRepository;
+    private StationServiceRepository stationServiceRepository;
 
-    public PompeRestController(PompeRepository pompeRepository) {
+    public PompeRestController(PompeRepository pompeRepository, StationServiceRepository stationServiceRepository) {
         this.pompeRepository = pompeRepository;
+        this.stationServiceRepository = stationServiceRepository;
     }
 
     @GetMapping("listerPompe")
@@ -34,7 +36,7 @@ public class PompeRestController {
     }
 
     @GetMapping("retrouverPompeById/{idPompe}")
-    public Optional<Pompe> getIdPompe(@PathVariable Long idPompe){
+    public Pompe getIdPompe(@PathVariable Long idPompe){
         return pompeRepository.findByIdPompe(idPompe);
     }
 
@@ -45,5 +47,10 @@ public class PompeRestController {
         }
 
         return pompeRepository.save(pompe);
+    }
+
+    @GetMapping("byStation/{idStation}")
+    public List<Pompe> pompesByStation(@PathVariable Long idStation){
+        return pompeRepository.findAllByStationService(stationServiceRepository.findByIdStation(idStation));
     }
 }

@@ -1,5 +1,6 @@
 package org.isj.fueltracker.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -51,6 +52,7 @@ public class Commande implements Serializable {
     private StationService stationService;
 
     @OneToMany(mappedBy = "commande")
+    @JsonIgnore
     private List<LigneCommande> listeLigneCommandes = new ArrayList<>();
 
     public Commande() {
