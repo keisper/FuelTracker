@@ -6,7 +6,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 
 @Entity
@@ -16,19 +16,26 @@ public class Commande implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long idCommande;
 
+    @Column(nullable = false)
     @DateTimeFormat(pattern = "dd-MM-yyyy")
     private Date dateCommande;
 
+    @Column(nullable = false)
     @DateTimeFormat(pattern = "dd-MM-yyyy")
     private Date dateLivraison;
-    @Column (name = "volumeCommande")
+
+    @Column (name = "volumeCommande", nullable = false)
     private float volumeCommande;
-    @Column (name = "volumeLivre")
+
+    @Column (name = "volumeLivre", nullable = false)
     private float volumeLivre;
-    @Column (name = "prixTotal")
+
+    @Column (name = "prixTotal", nullable = false)
     private int prixTotal;
+
     @Column (name = "ristourne")
     private int ristourne;
+
     public enum Statut{
         enregistrer, commander, livrer
     }
@@ -39,6 +46,11 @@ public class Commande implements Serializable {
     public enum Paiement{
         EnCours, Effectué, NonEffectué
     }
+
+    //@Column(nullable = false)
+    private Date dateCreation;
+
+    private Date dateModification;
 
     @Enumerated(EnumType.STRING)
     private Paiement paiement;
@@ -272,4 +284,19 @@ public class Commande implements Serializable {
         this.paiement = paiement;
     }
 
+    public Date getDateCreation() {
+        return dateCreation;
+    }
+
+    public void setDateCreation(Date dateCreation) {
+        this.dateCreation = dateCreation;
+    }
+
+    public Date getDateModification() {
+        return dateModification;
+    }
+
+    public void setDateModification(Date dateModification) {
+        this.dateModification = dateModification;
+    }
 }

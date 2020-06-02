@@ -91,13 +91,28 @@ public class StationServiceRestController {
     }
 
     @PostMapping("enregistrement")
-    public void save(@RequestBody StationService stationService, @RequestBody Pompe pompe, @RequestBody Reservoir reservoir){
+    public void save(@RequestBody StationService stationService, @RequestBody List<Pompe> pompes, @RequestBody List<Reservoir> reservoirs){
 
     }
 
-    @PostMapping("actionnairesStation")
-    public void saveAct(@RequestBody StationService stationService, @RequestBody List<Utilisateur> users){
-        stationService.setListeActionnaires(users);
-        stationServiceRepository.save(stationService);
+    @PostMapping("actionnairesStation/{idStation}")
+    public String saveAct(@PathVariable Long idStation, @RequestBody List<Utilisateur> users){
+
+        StationService stationService = stationServiceRepository.findByIdStation(idStation);
+        try{
+            if(stationService.getListeActionnaires() == null){
+                stationService.setListeActionnaires(users);
+                stationServiceRepository.save(stationService);
+            }else{
+                for(Utilisateur user : users){
+                    stationService.getListeActionnaires().add(user);
+                }
+                stationServiceRepository.save(stationService);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        return "Done";
     }
 }

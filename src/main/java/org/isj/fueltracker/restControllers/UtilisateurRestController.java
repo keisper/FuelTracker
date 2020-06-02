@@ -1,20 +1,12 @@
 package org.isj.fueltracker.restControllers;
 
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.isj.fueltracker.entities.Utilisateur;
 import org.isj.fueltracker.repositories.UtilisateurRepository;
-import org.isj.fueltracker.security.LoginViewModel;
-import org.isj.fueltracker.security.UserPrincipal;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
 @RestController

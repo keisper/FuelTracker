@@ -2,6 +2,7 @@ package org.isj.fueltracker.repositories;
 
 import org.isj.fueltracker.entities.IndexCarburant;
 import org.isj.fueltracker.entities.Pompe;
+import org.isj.fueltracker.entities.Reservoir;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

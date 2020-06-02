@@ -1,6 +1,7 @@
 package org.isj.fueltracker.restControllers;
 
 import org.isj.fueltracker.entities.TypeCarburant;
+import org.isj.fueltracker.repositories.FournisseurRepository;
 import org.isj.fueltracker.repositories.TypeCarburantRepository;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,14 +14,21 @@ import java.util.Optional;
 public class TypeCarburantRestController {
 
     private final TypeCarburantRepository typeCarburantRepository;
+    private final FournisseurRepository fournisseurRepository;
 
-    public TypeCarburantRestController(TypeCarburantRepository typeCarburantRepository) {
+    public TypeCarburantRestController(TypeCarburantRepository typeCarburantRepository, FournisseurRepository fournisseurRepository) {
         this.typeCarburantRepository = typeCarburantRepository;
+        this.fournisseurRepository = fournisseurRepository;
     }
 
     @GetMapping("listerTypeCarburant")
     public List<TypeCarburant> getAllPompeTypeCarburant(){
-        return typeCarburantRepository.findAll();
+        List<TypeCarburant> typeCarburants = typeCarburantRepository.findAll();
+        for(TypeCarburant tc : typeCarburants){
+            tc.getFournisseur();
+        }
+
+        return typeCarburants;
     }
 
     @PostMapping("creerTypeCarburant")
@@ -45,5 +53,10 @@ public class TypeCarburantRestController {
         }
 
         return typeCarburantRepository.save(typeCarburant);
+    }
+
+    @GetMapping("byFournisseur/{idFournisseur}")
+    public List<TypeCarburant> getAllByFournisseur(@PathVariable Long idFournisseur){
+        return typeCarburantRepository.findAllByFournisseur(fournisseurRepository.findByIdFournisseur(idFournisseur));
     }
 }

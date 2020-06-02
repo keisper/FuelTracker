@@ -7,5 +7,5 @@ import java.util.Optional;
 
 public interface FournisseurRepository extends JpaRepository<Fournisseur, Long> {
 
-    Optional<Fournisseur> findByIdFournisseur(Long id);
+    Fournisseur findByIdFournisseur(Long id);
 }

@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.sql.Date;
 import java.util.List;
 
 @Entity
@@ -17,18 +17,25 @@ public class Utilisateur implements Serializable {
 
     @Column (name = "nom")
     private String nom;
+
     @Column (name = "prenom")
     private String prenom;
+
     @Column (name = "nationalite")
     private String nationalite;
+
     @Column (name = "pays")
     private String pays;
+
     @Column (name = "adresse")
     private String adresse;
+
     @Column (name = "partAction")
     private float partAction;
+
     @Column (name = "roles")
     private String roles;
+
     @Column (name = "username")
     private String username;
     @Column (name = "password")
@@ -38,6 +45,9 @@ public class Utilisateur implements Serializable {
     @Column (name = "active",nullable = false)
     private Boolean active;
 
+    //@Column(nullable = false)
+    private Date dateCreation;
+    private Date dateModification;
 
     public enum Statut{
         Personne_Morale, Personne_Physique
@@ -46,7 +56,7 @@ public class Utilisateur implements Serializable {
     @Enumerated(EnumType.STRING)
     private Statut statutUtilisateur;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     @JsonIgnore
     private List<StationService> listeStations = new ArrayList<>();
 
@@ -67,21 +77,21 @@ public class Utilisateur implements Serializable {
      * @param email
      * @param active
      */
-    public Utilisateur(String nom, String prenom, String nationalite, String pays, String adresse,
-                       float partAction, Statut statutUtilisateur, String roles, String username,
-                       String password, String email, Boolean active) {
+    public Utilisateur(String nom, String prenom, String nationalite, String pays, String adresse, float partAction, String roles, String username, String password, String email, Boolean active, Date dateCreation, Date dateModification, Statut statutUtilisateur) {
         this.nom = nom;
         this.prenom = prenom;
         this.nationalite = nationalite;
         this.pays = pays;
         this.adresse = adresse;
         this.partAction = partAction;
-        this.statutUtilisateur = statutUtilisateur;
         this.roles = roles;
         this.username = username;
         this.password = password;
         this.email = email;
         this.active = active;
+        this.dateCreation = dateCreation;
+        this.dateModification = dateModification;
+        this.statutUtilisateur = statutUtilisateur;
     }
 
     /**
@@ -304,5 +314,19 @@ public class Utilisateur implements Serializable {
         this.active = active;
     }
 
+    public Date getDateCreation() {
+        return dateCreation;
+    }
 
+    public void setDateCreation(Date dateCreation) {
+        this.dateCreation = dateCreation;
+    }
+
+    public Date getDateModification() {
+        return dateModification;
+    }
+
+    public void setDateModification(Date dateModification) {
+        this.dateModification = dateModification;
+    }
 }

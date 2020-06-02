@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.sql.Date;
 import java.util.List;
 
 /**
@@ -16,18 +17,29 @@ public class Fournisseur implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long idFournisseur;
-    @Column (name = "nom")
+
+    @Column (name = "nom", nullable = false)
     private String nom;
-    @Column (name = "adresse")
+
+    @Column (name = "adresse", nullable = false)
     private String adresse;
 
-    @OneToMany(mappedBy = "fournisseur")
+    //@Column(nullable = false)
+    private Date dateCreation;
+
+    private Date dateModification;
+
+    @OneToMany(mappedBy = "fournisseur", cascade = CascadeType.ALL)
     @JsonIgnore
     private List<Commande> listeCommandes = new ArrayList<>();
 
-    @OneToMany(mappedBy = "fournisseur")
+    @OneToMany(mappedBy = "fournisseur", cascade = CascadeType.ALL)
     @JsonIgnore
     private List<StationService> listeStations = new ArrayList<>();
+
+    @OneToMany(mappedBy = "fournisseur", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private List<TypeCarburant> listeTypeCarburants = new ArrayList<>();
 
     public Fournisseur() {
     }
@@ -122,4 +134,27 @@ public class Fournisseur implements Serializable {
         this.listeCommandes = listeCommandes;
     }
 
+    public List<TypeCarburant> getListeTypeCarburants() {
+        return listeTypeCarburants;
+    }
+
+    public void setListeTypeCarburants(List<TypeCarburant> listeTypeCarburants) {
+        this.listeTypeCarburants = listeTypeCarburants;
+    }
+
+    public Date getDateCreation() {
+        return dateCreation;
+    }
+
+    public void setDateCreation(Date dateCreation) {
+        this.dateCreation = dateCreation;
+    }
+
+    public Date getDateModification() {
+        return dateModification;
+    }
+
+    public void setDateModification(Date dateModification) {
+        this.dateModification = dateModification;
+    }
 }

@@ -9,4 +9,5 @@ public interface UtilisateurRepository extends JpaRepository<Utilisateur, Long> 
     Utilisateur findByUsername(String username);
     Utilisateur findByUsernameAndPassword(String username, String password);
     Optional<Utilisateur> findByIdUtilisateur(Long id);
+
 }

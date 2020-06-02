@@ -2,18 +2,31 @@ package org.isj.fueltracker.entities;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.sql.Date;
 
 @Entity
 public class TypeCarburant implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long idTypeCarburant;
+
     @Column(name = "libelle")
     private String libelle;
-    @Column(name = "prixVente")
+
+    @Column(name = "prixVente", nullable = false)
     private int prixVente;
-    @Column(name = "prixAchat")
+
+    @Column(name = "prixAchat", nullable = false)
     private int prixAchat;
+
+    //@Column(nullable = false)
+    private Date dateCreation;
+
+    private Date dateModification;
+
+    @ManyToOne
+    private Fournisseur fournisseur;
 
     public TypeCarburant(){
 
@@ -93,5 +106,29 @@ public class TypeCarburant implements Serializable {
      */
     public void setPrixVente(int prixVente) {
         this.prixVente = prixVente;
+    }
+
+    public Fournisseur getFournisseur() {
+        return fournisseur;
+    }
+
+    public void setFournisseur(Fournisseur fournisseur) {
+        this.fournisseur = fournisseur;
+    }
+
+    public Date getDateCreation() {
+        return dateCreation;
+    }
+
+    public void setDateCreation(Date dateCreation) {
+        this.dateCreation = dateCreation;
+    }
+
+    public Date getDateModification() {
+        return dateModification;
+    }
+
+    public void setDateModification(Date dateModification) {
+        this.dateModification = dateModification;
     }
 }

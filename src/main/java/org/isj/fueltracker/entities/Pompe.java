@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.sql.Date;
 import java.util.List;
 
 @Entity
@@ -13,12 +14,19 @@ public class Pompe implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long idPompe;
-    @Column (name = "code")
+
+    @Column (name = "code", nullable = false)
     private String code;
+
     @Column (name = "libelle")
     private String libelle;
 
-    @OneToMany(mappedBy = "pompe")
+    //@Column(nullable = false)
+    private Date dateCreation;
+
+    private Date dateModification;
+
+    @OneToMany(mappedBy = "pompe", cascade = CascadeType.ALL)
     @JsonIgnore
     private List<IndexCarburant> listindex = new ArrayList<>();
 
@@ -119,5 +127,22 @@ public class Pompe implements Serializable {
     public void setStationservice(StationService stationservice) {
         this.stationService = stationservice;
     }
+
+    public Date getDateCreation() {
+        return dateCreation;
+    }
+
+    public void setDateCreation(Date dateCreation) {
+        this.dateCreation = dateCreation;
+    }
+
+    public Date getDateModification() {
+        return dateModification;
+    }
+
+    public void setDateModification(Date dateModification) {
+        this.dateModification = dateModification;
+    }
+
 }
 

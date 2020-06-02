@@ -2,6 +2,7 @@ package org.isj.fueltracker.entities;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.sql.Date;
 
 @Entity
 public class IndexCarburant implements Serializable{
@@ -9,12 +10,20 @@ public class IndexCarburant implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long idIndex;
+
     @Column (name = "description")
     private String description;
-    @Column (name = "numero")
+
+    @Column (name = "numero", nullable = false)
     private int numero;
+
     @Column (name = "volumeVendu")
-    private int volumeVendu;
+    private float volumeVendu;
+
+    //@Column(nullable = false)
+    private Date dateCreation;
+
+    private Date dateModification;
 
     @ManyToOne
     private Pompe pompe;
@@ -74,7 +83,7 @@ public class IndexCarburant implements Serializable{
      *
      * @return int
      */
-    public int getVolumeVendu() {
+    public float getVolumeVendu() {
         return volumeVendu;
     }
 
@@ -132,5 +141,21 @@ public class IndexCarburant implements Serializable{
      */
     public void setReservoir(Reservoir reservoir) {
         this.reservoir = reservoir;
+    }
+
+    public Date getDateCreation() {
+        return dateCreation;
+    }
+
+    public void setDateCreation(Date dateCreation) {
+        this.dateCreation = dateCreation;
+    }
+
+    public Date getDateModification() {
+        return dateModification;
+    }
+
+    public void setDateModification(Date dateModification) {
+        this.dateModification = dateModification;
     }
 }

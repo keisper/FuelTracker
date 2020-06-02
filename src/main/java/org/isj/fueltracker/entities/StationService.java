@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.sql.Date;
 import java.util.List;
 
 @Entity
@@ -16,28 +17,29 @@ public class StationService implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long idStation;
 
+    @Column(nullable = false)
     private String nom;
+
+    @Column(nullable = false)
     private String adresse;
 
-    public enum TypeCarburant{
-        Gazoil, Essence
-    }
+    //@Column(nullable = false)
+    private Date dateCreation;
 
-    @Enumerated(EnumType.STRING)
-    private TypeCarburant typeCarburant;
+    private Date dateModification;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     @JsonIgnore
     private List<Utilisateur> listeActionnaires = new ArrayList<>();
 
     @ManyToOne
     private Fournisseur fournisseur;
 
-    @OneToMany(mappedBy = "stationService")
+    @OneToMany(mappedBy = "stationService", cascade = CascadeType.ALL)
     @JsonIgnore
     private List<Pompe> pompe = new ArrayList<>();
 
-    @OneToMany(mappedBy = "stationService")
+    @OneToMany(mappedBy = "stationService", cascade = CascadeType.ALL)
     @JsonIgnore
     private List<Commande> commande = new ArrayList<>();
 
@@ -53,7 +55,6 @@ public class StationService implements Serializable {
     public StationService(String nom, String adresse, TypeCarburant typeCarburant) {
         this.nom = nom;
         this.adresse = adresse;
-        this.typeCarburant = typeCarburant;
     }
 
     /**
@@ -102,22 +103,6 @@ public class StationService implements Serializable {
      */
     public void setAdresse(String adresse) {
         this.adresse = adresse;
-    }
-
-    /**
-     *
-     * @return TypeCarburant
-     */
-    public TypeCarburant getTypeCarburant() {
-        return typeCarburant;
-    }
-
-    /**
-     *
-     * @param typeCarburant
-     */
-    public void setTypeCarburant(TypeCarburant typeCarburant) {
-        this.typeCarburant = typeCarburant;
     }
 
     /**
@@ -183,5 +168,21 @@ public class StationService implements Serializable {
 
     public void setFournisseur(Fournisseur fournisseur) {
         this.fournisseur = fournisseur;
+    }
+
+    public Date getDateCreation() {
+        return dateCreation;
+    }
+
+    public void setDateCreation(Date dateCreation) {
+        this.dateCreation = dateCreation;
+    }
+
+    public Date getDateModification() {
+        return dateModification;
+    }
+
+    public void setDateModification(Date dateModification) {
+        this.dateModification = dateModification;
     }
 }
